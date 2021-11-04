@@ -1,0 +1,255 @@
+﻿IDs,Sample,Company,SolA_concentration_pmol.per.g.FW,selected
+SunR1,Sunred,HZPC,5.847861905,no
+SunR2,Sunred,HZPC,3.465841837,no
+SunR3,Sunred,HZPC,8.304440773,no
+SunR4,Sunred,HZPC,12.10963893,no
+SunR5,Sunred,HZPC,10.70783273,no
+EurR1,Eurostar,HZPC,18.33118147,no
+EurR2,Eurostar,HZPC,22.91596563,no
+EurR3,Eurostar,HZPC,24.7866217,no
+EurR4,Eurostar,HZPC,28.40872571,no
+EurR5,Eurostar,HZPC,28.32385714,no
+ArsR1,Arsenal,HZPC,48.03307625,no
+ArsR2,Arsenal,HZPC,32.55591429,no
+ArsR3,Arsenal,HZPC,45.4978698,no
+ArsR4,Arsenal,HZPC,33.31904247,no
+ArsR5,Arsenal,HZPC,38.3262,no
+AltR1,Althea,HZPC,22.80695283,no
+AltR2,Althea,HZPC,24.75371399,no
+AltR3,Althea,HZPC,35.54741122,no
+AltR4,Althea,HZPC,10.88554443,no
+AltR5,Althea,HZPC,11.6205,no
+MerR1,Merida,HZPC,17.85134726,no
+MerR2,Merida,HZPC,21.53095238,no
+MerR3,Merida,HZPC,21.10481304,no
+MerR4,Merida,HZPC,10.09193878,no
+MerR5,Merida,HZPC,18.93339483,no
+SpuR1,Spunta,HZPC,25.87722889,no
+SpuR2,Spunta,HZPC,36.72329393,no
+SpuR3,Spunta,HZPC,11.73866055,no
+SpuR4,Spunta,HZPC,30.81977755,no
+SpuR5,Spunta,HZPC,9.780010385,no
+AlcR1,Alcander,HZPC,12.34140787,no
+AlcR2,Alcander,HZPC,11.446875,no
+AlcR3,Alcander,HZPC,2.946596939,no
+AlcR4,Alcander,HZPC,4.700868132,no
+AlcR5,Alcander,HZPC,2.777165325,no
+ChaR1,Challenger,HZPC,21.47343439,no
+ChaR2,Challenger,HZPC,29.62489655,no
+ChaR3,Challenger,HZPC,13.1182284,no
+ChaR4,Challenger,HZPC,13.92611901,no
+ChaR5,Challenger,HZPC,5.303142279,no
+TriR1,Triple ,HZPC,27.82861466,no
+TriR2,Triple ,HZPC,12.53654934,no
+TriR3,Triple ,HZPC,22.7323588,no
+TriR4,Triple ,HZPC,14.15768473,no
+TriR5,Triple ,HZPC,28.80674107,no
+CamR1,Camel,HZPC,18.36209913,no
+CamR2,Camel,HZPC,14.43808722,no
+CamR3,Camel,HZPC,15.93110754,no
+CamR4,Camel,HZPC,24.63781746,no
+CamR5,Camel,HZPC,19.54771506,no
+LeoR2,Leonardo,HZPC,63.41497943,no
+LeoR3,Leonardo,HZPC,64.38414672,no
+LeoR4,Leonardo,HZPC,49.42333709,no
+LeoR5,Leonardo,HZPC,77.4095712,no
+VR8R1,VR 808,HZPC,41.6031926,no
+VR8R2,VR 808,HZPC,16.96592157,no
+VR8R3,VR 808,HZPC,46.95616641,no
+VR8R4,VR 808,HZPC,38.87546098,no
+VR8R5,VR 808,HZPC,56.54158937,no
+AllR1,Allison,HZPC,30.33215355,no
+AllR2,Allison,HZPC,17.06545526,no
+AllR3,Allison,HZPC,17.16696097,no
+AllR4,Allison,HZPC,11.31126857,no
+AllR5,Allison,HZPC,26.14550549,no
+TigR1,Tiger,HZPC,36.06392252,no
+TigR2,Tiger,HZPC,27.52529412,no
+TigR3,Tiger,HZPC,35.81673761,no
+TigR4,Tiger,HZPC,25.6420102,no
+TigR5,Tiger,HZPC,15.67295798,no
+PanR1,Panamera,HZPC,19.15140994,no
+PanR2,Panamera,HZPC,67.78783901,no
+PanR3,Panamera,HZPC,55.5773723,no
+PanR4,Panamera,HZPC,74.1451422,no
+PanR5,Panamera,HZPC,39.43568265,no
+Lady anna R1,Lady anna,Meijer Potato,4.828923767,no
+Lady anna R2,Lady anna,Meijer Potato,17.48653132,no
+Lady anna R3,Lady anna,Meijer Potato,24.9222399,no
+Lady anna R4,Lady anna,Meijer Potato,41.69915254,no
+Lady anna R5,Lady anna,Meijer Potato,12.55943223,no
+Melody R1,Melody,Meijer Potato,54.71466042,no
+Melody R2,Melody,Meijer Potato,36.19265562,no
+Melody R3,Melody,Meijer Potato,29.15064935,no
+Melody R4,Melody,Meijer Potato,51.26048705,no
+Melody R5,Melody,Meijer Potato,17.65714286,no
+Lady Mar R1,Lady Mar,Meijer Potato,28.70758642,no
+Lady Mar R2,Lady Mar,Meijer Potato,50.25641927,no
+Lady Mar R3,Lady Mar,Meijer Potato,35.35098824,no
+Lady Mar R4,Lady Mar,Meijer Potato,0.286554622,no
+Lady Mar R5,Lady Mar,Meijer Potato,15.50644938,no
+Lady roseta R2,Lady roseta,Meijer Potato,3.439831482,no
+Lady roseta R3,Lady roseta,Meijer Potato,4.871952818,no
+Lady roseta R4,Lady roseta,Meijer Potato,1.127786753,no
+Lady roseta R5,Lady roseta,Meijer Potato,5.254887218,no
+Lady alica R1,Lady alica,Meijer Potato,11.1314396,no
+Lady alica R2,Lady alica,Meijer Potato,21.14795406,no
+Lady alica R3,Lady alica,Meijer Potato,17.19369655,no
+Lady alica R4,Lady alica,Meijer Potato,15.57218689,no
+Lady alica R5,Lady alica,Meijer Potato,15.89675325,no
+Ani R1,Anivia,HZPC,25.82734694,no
+Ani R2,Anivia,HZPC,26.8581515,no
+Ani R3,Anivia,HZPC,37.58311688,no
+Ani R4,Anivia,HZPC,30.0515528,no
+Ani R5,Anivia,HZPC,22.3314554,no
+Aco R1,Acoustic,Meijer Potato,25.75624218,no
+Aco R2,Acoustic,Meijer Potato,25.62987711,no
+Aco R3,Acoustic,Meijer Potato,32.34177143,no
+Aco R4,Acoustic,Meijer Potato,33.41402027,no
+Aco R5,Acoustic,Meijer Potato,16.53164485,no
+Soprano R1,Soprano ,Meijer Potato,6.239952904,no
+Soprano R2,Soprano ,Meijer Potato,15.66593407,no
+Soprano R3,Soprano ,Meijer Potato,6.36728632,no
+Soprano R4,Soprano ,Meijer Potato,9.179076224,no
+Soprano R5,Soprano ,Meijer Potato,9.598034934,no
+Cri R1,Crisps4all,HZPC,9.315479115,no
+Cri R2,Crisps4all,HZPC,10.09580705,no
+Cri R3,Crisps4all,HZPC,17.37723625,no
+Cri R4,Crisps4all,HZPC,23.68281307,no
+Cri R5,Crisps4all,HZPC,19.98513086,no
+Ama R1,Amanda,HZPC,67.54672489,no
+Ama R2,Amanda,HZPC,24.17401753,no
+Ama R3,Amanda,HZPC,39.06947311,no
+Ama R4,Amanda,HZPC,0.093470149,no
+Ama R5,Amanda,HZPC,39.13008741,no
+Drohstuna R1,Drohstuna,Meijer Potato,38.50964571,no
+Drohstuna R2,Drohstuna,Meijer Potato,15.01659836,no
+Drohstuna R3,Drohstuna,Meijer Potato,26.08598131,no
+Drohstuna R4,Drohstuna,Meijer Potato,31.57638432,no
+Drohstuna R5,Drohstuna,Meijer Potato,18.95400759,no
+Pri R1,Prince of Orange,HZPC,22.02765043,no
+Pri R2,Prince of Orange,HZPC,22.19760956,no
+Pri R3,Prince of Orange,HZPC,21.84470792,no
+Pri R4,Prince of Orange,HZPC,26.6905102,no
+Pri R5,Prince of Orange,HZPC,29.58548842,no
+Car R1,Cardyma,HZPC,107.1566792,no
+Car R2,Cardyma,HZPC,86.55984556,no
+Car R3,Cardyma,HZPC,63.2907767,no
+Car R4,Cardyma,HZPC,43.52324213,no
+Car R5,Cardyma,HZPC,62.67764286,no
+Musica R1,Musica,Meijer Potato,9.382427562,no
+Musica R2,Musica,Meijer Potato,15.8807649,no
+Musica R3,Musica,Meijer Potato,7.013818072,no
+Musica R4,Musica,Meijer Potato,19.34646046,no
+Musica R5,Musica,Meijer Potato,27.32184225,no
+ACTARO R1,Actaro,Avebe,38.38238434,yes
+ACTARO R2,Actaro,Avebe,26.44859155,yes
+ACTARO R3,Actaro,Avebe,26.90242718,yes
+ACTARO R4,Actaro,Avebe,25.30920502,yes
+ACTARO R5,Actaro,Avebe,37.58867403,yes
+ALTUS R1,Altus,Avebe,11.06721854,yes
+ALTUS R2,Altus,Avebe,45.27979592,yes
+ALTUS R3,Altus,Avebe,36.64375,yes
+ALTUS R4,Altus,Avebe,20.46670213,yes
+ALTUS R5,Altus,Avebe,7.406652361,yes
+AVARNA R1,Avarna,Avebe,94.31011561,yes
+AVARNA R2,Avarna,Avebe,39.76368821,yes
+AVARNA R3,Avarna,Avebe,45.09375,yes
+AVARNA R4,Avarna,Avebe,68.26234177,yes
+AVARNA R5,Avarna,Avebe,93.61618257,yes
+AVATAR R1,Avatar,Avebe,95.41835443,yes
+AVATAR R2,Avatar,Avebe,80.965625,yes
+AVATAR R3,Avatar,Avebe,105.1003012,yes
+AVATAR R4,Avatar,Avebe,148.3625,yes
+AVATAR R5,Avatar,Avebe,131.625,yes
+AVEKA R1,Aveka,Avebe,3.79516129,yes
+AVEKA R2,Aveka,Avebe,122.3026316,yes
+AVEKA R3,Aveka,Avebe,54.22258065,yes
+AVEKA R4,Aveka,Avebe,37.26,yes
+AVEKA R5,Aveka,Avebe,55.47987805,yes
+AVENGER R1,Avenger,Avebe,6.690331492,yes
+AVENGER R2,Avenger,Avebe,8.248136646,yes
+AVENGER R3,Avenger,Avebe,0,yes
+AVENGER R4,Avenger,Avebe,5.6671875,yes
+AVENGER R5,Avenger,Avebe,0.842045455,yes
+AVERIA R1,Averia,Avebe,41.3943038,yes
+AVERIA R2,Averia,Avebe,68.60176471,yes
+AVERIA R3,Averia,Avebe,54.45095541,yes
+AVERIA R4,Averia,Avebe,61.60555556,yes
+AVERIA R5,Averia,Avebe,39.29948805,yes
+AXION R1,Axion,Avebe,74.91336898,yes
+AXION R2,Axion,Avebe,74.90543478,yes
+AXION R3,Axion,Avebe,32.05909091,yes
+AXION R4,Axion,Avebe,32.94160305,yes
+AXION R5,Axion,Avebe,91.62146341,yes
+DESIREE R1,Desiree,Avebe,81.58032787,yes
+DESIREE R2,Desiree,Avebe,65.52183099,yes
+DESIREE R3,Desiree,Avebe,65.61055409,yes
+DESIREE R4,Desiree,Avebe,63.45944882,yes
+DESIREE R5,Desiree,Avebe,82.03097015,yes
+FESTIEN R1,Festien,Avebe,8.974193548,yes
+FESTIEN R2,Festien,Avebe,18.39454225,yes
+FESTIEN R3,Festien,Avebe,24.84857143,yes
+FESTIEN R4,Festien,Avebe,13.48082192,yes
+FESTIEN R5,Festien,Avebe,7.720793037,yes
+FONTANE R1,Fontane,Avebe,39.55714286,yes
+FONTANE R2,Fontane,Avebe,30.04685658,yes
+FONTANE R3,Fontane,Avebe,49.58484375,yes
+FONTANE R4,Fontane,Avebe,42.94071926,yes
+FONTANE R5,Fontane,Avebe,26.18416667,yes
+INNOVATOR R1,Innovator,Avebe,18.9054878,yes
+INNOVATOR R2,Innovator,Avebe,29.04077253,yes
+INNOVATOR R3,Innovator,Avebe,15.97916667,yes
+INNOVATOR R4,Innovator,Avebe,35.77131148,yes
+INNOVATOR R5,Innovator,Avebe,7.957164179,yes
+IVORY RUSSET R1,Ivory Russet,Avebe,5.13285124,yes
+IVORY RUSSET R2,Ivory Russet,Avebe,1.45234375,yes
+IVORY RUSSET R3,Ivory Russet,Avebe,3.544339623,yes
+IVORY RUSSET R4,Ivory Russet,Avebe,2.466016713,yes
+IVORY RUSSET R5,Ivory Russet,Avebe,3.165217391,yes
+LADY CLAIRE R1,Lady Claire,Avebe,9.275269646,yes
+LADY CLAIRE R2,Lady Claire,Avebe,8.692632613,yes
+LADY CLAIRE R3,Lady Claire,Avebe,23.55909091,yes
+LADY CLAIRE R4,Lady Claire,Avebe,11.75485934,yes
+LADY CLAIRE R5,Lady Claire,Avebe,12.45671642,yes
+MERENCO R1,Merenco,Avebe,4.348275862,yes
+MERENCO R2,Merenco,Avebe,0,yes
+MERENCO R3,Merenco,Avebe,0,yes
+MERENCO R4,Merenco,Avebe,0,yes
+NOVANO R1,Novano,Avebe,11.34425676,yes
+NOVANO R2,Novano,Avebe,34.41596859,yes
+NOVANO R3,Novano,Avebe,22.50529412,yes
+NOVANO R4,Novano,Avebe,8.147632312,yes
+NOVANO R5,Novano,Avebe,71.28021583,yes
+PERFORMER R1,Performer,Avebe,6.504113924,yes
+PERFORMER R2,Performer,Avebe,15.27026239,yes
+PERFORMER R3,Performer,Avebe,18.25334773,yes
+PERFORMER R4,Performer,Avebe,7.110229446,yes
+PERFORMER R5,Performer,Avebe,13.21666667,yes
+PLASETTIE R1,Plasettie,Avebe,12.22223587,yes
+PLASETTIE R2,Plasettie,Avebe,12.81703704,yes
+PLASETTIE R3,Plasettie,Avebe,14.1656535,yes
+PLASETTIE R4,Plasettie,Avebe,26.25580645,yes
+PLASETTIE R5,Plasettie,Avebe,10.19460192,yes
+SANTE R1,Sante,Avebe,6.05916955,no
+SANTE R2,Sante,Avebe,20.01147541,no
+SAPPODI R1,Sappodi,Avebe,70.47588424,yes
+SAPPODI R2,Sappodi,Avebe,30.03272251,yes
+SAPPODI R3,Sappodi,Avebe,48.8528481,yes
+SAPPODI R4,Sappodi,Avebe,46.2,yes
+SAPPODI R5,Sappodi,Avebe,45.69990566,yes
+SERESTA R1,Seresta,Avebe,9.368478261,yes
+SERESTA R2,Seresta,Avebe,10.22156863,yes
+SERESTA R3,Seresta,Avebe,5.634292035,yes
+SERESTA R4,Seresta,Avebe,9.651632047,yes
+SERESTA R5,Seresta,Avebe,5.925,yes
+SUPPORTER R1,Supporter,Avebe,4.450306748,yes
+SUPPORTER R2,Supporter,Avebe,6.380514706,yes
+SUPPORTER R3,Supporter,Avebe,6.162430939,yes
+SUPPORTER R4,Supporter,Avebe,8.463829787,yes
+SUPPORTER R5,Supporter,Avebe,0,yes
+Empty Pot R1,empty pot,,0,no
+Empty Pot R2,empty pot,,-0.087486096,no
+Empty Pot R3,empty pot,,-0.004338154,no
+Empty Pot R4,empty pot,,-0.076640712,no
+Empty Pot R5,empty pot,,0,no
