@@ -137,3 +137,21 @@ g_S <- ggplot(hatch_s_S, aes(x = treatment, y = mean_hatch)) +
 
 g_A / g_D / g_S
 ```
+
+# Metabolomics of fractions
+
+Import, filter and trim the dfs (pos and neg)
+
+```{r}
+fr_pos <- read.csv("input/fractions_pos.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+fr_neg <- read.csv("input/fractions_neg.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+compounds_fr_pos <- fr_pos[,1:13]
+compounds_fr_neg <- fr_neg[,1:13]
+fr_pos_b <- fr_pos[,colnames(fr_pos) == "blank"]
+fr_neg_b <- fr_neg[,colnames(fr_neg) == "blank"]
+fr_pos <- fr_pos[,-c(1:14)]
+fr_neg <- fr_neg[,-c(1:14)]
+fr_pos_f <- fr_pos[(!apply(fr_pos<(fr_pos_b*1.1),1,all)),]
+fr_neg_f <- fr_neg[(!apply(fr_neg<(fr_neg_b*1.1),1,all)),]
+
+```

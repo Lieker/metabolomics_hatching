@@ -25,18 +25,19 @@ filtertrim <- function(x, ep_factor = 1){
     #remove the trimmed compounds from ensum in the main df
     nc <- row.names(ensum)
     nc <- gsub("V","",nc)
-    x_f <- x %>% rownames_to_column("compound")
-    x_f <- x_f[x_f$compound %in% nc,]
-    x_f <- x_f %>% subset(., select = -c(compound))
-    
-    #remove if compound is present in less than 4 samples
-    x_binary <- x_f
-    x_binary <- apply(x_binary, c(1,2), function(z) {ifelse(any(z > 0), 1, 0)})
-    keep <- as.data.frame(x_binary[rowSums(x_binary) >3,])
-    x_f2 <- x_f[row.names(x_f) %in% row.names(keep),1:100]
+    x <- x %>% rownames_to_column("compound")
+    x <- x[x$compound %in% nc,]
+    x <- x %>% subset(., select = -c(compound))
+    x <- x[,1:100]
   }
   
+  #remove if compound is present in less than 4 samples
+  x_binary <- x
+  x_binary <- apply(x_binary, c(1,2), function(z) {ifelse(any(z > 0), 1, 0)})
+  keep <- as.data.frame(x_binary[rowSums(x_binary) >3,])
+  x_f <- x[row.names(x) %in% row.names(keep),]
+  
   #filter compounds that do not reach above 200 in any sample (column)
-  x_f3 <- x_f2[!apply(x_f2<200,1,all),]
-  return(x_f3)
+  x_f2 <- x_f[!apply(x_f<200,1,all),]
+  return(x_f2)
 }
