@@ -13,6 +13,7 @@ Necessary packages are loaded
 * tidyverse
 * dplyr
 * plotrix
+* stringr
 
 ```{r include = FALSE}
 if ("knitr" %in% installed.packages()){
@@ -76,6 +77,12 @@ if ("plotrix" %in% installed.packages()){
   BiocManager::install("plotrix")
   library("plotrix")
 }
+if ("stringr" %in% installed.packages()){
+  library("stringr")
+} else {
+  BiocManager::install("stringr")
+  library("stringr")
+}
 ```
 
 # Get hatching per fraction
@@ -90,7 +97,7 @@ source("scripts/hatch_summ.R")
 
 Plot the hatching per fraction per genotype:
 
-```{r plothatchingperfr, fig.height = 6, fig.width = 5}
+```{r plothatchingperfr, fig.height = 8, fig.width = 5}
 hatch_r <- hatch_raw(input = "input/210810_frac.csv")
 hatch_c <- hatch_calc(input = "input/210810_frac.csv")
 hatch_s <- hatch_summ(input = "input/210810_frac.csv")
@@ -116,7 +123,7 @@ g_A <- ggplot(hatch_s_A, aes(x = treatment, y = mean_hatch)) +
   geom_errorbar(aes(ymin=mean_hatch-sterr, ymax=mean_hatch+sterr), width=.2) + 
   geom_jitter(data = hatch_c_A, aes(x = treatment, y = hatchingpercent), width = 0.1) +
   scale_x_discrete(name = "") +
-  scale_y_continuous(name = "% hatch", limits = c(-10,80), breaks = c(0,20,40,60,80)) +
+  scale_y_continuous(name = "% hatch", limits = c(-10,74), breaks = c(0,20,40,60,80)) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1.5, hjust=1.25))
 g_D <- ggplot(hatch_s_D, aes(x = treatment, y = mean_hatch)) +
   geom_bar(stat = "identity", fill = "white", colour = "black") +
@@ -124,7 +131,7 @@ g_D <- ggplot(hatch_s_D, aes(x = treatment, y = mean_hatch)) +
   geom_errorbar(aes(ymin=mean_hatch-sterr, ymax=mean_hatch+sterr), width=.2) + 
   geom_jitter(data = hatch_c_D, aes(x = treatment, y = hatchingpercent), width = 0.1) +
   scale_x_discrete(name = "") +
-  scale_y_continuous(name = "% hatch", limits = c(-10,80), breaks = c(0,20,40,60,80)) +
+  scale_y_continuous(name = "% hatch", limits = c(-10,74), breaks = c(0,20,40,60,80)) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1.5, hjust=1.25))
 g_S <- ggplot(hatch_s_S, aes(x = treatment, y = mean_hatch)) +
   geom_bar(stat = "identity", fill = "white", colour = "black") +
@@ -132,7 +139,7 @@ g_S <- ggplot(hatch_s_S, aes(x = treatment, y = mean_hatch)) +
   geom_errorbar(aes(ymin=mean_hatch-sterr, ymax=mean_hatch+sterr), width=.2) + 
   geom_jitter(data = hatch_c_S, aes(x = treatment, y = hatchingpercent), width = 0.1) +
   scale_x_discrete(name = "") +
-  scale_y_continuous(name = "% hatch", limits = c(-10,80), breaks = c(0,20,40,60,80)) +
+  scale_y_continuous(name = "% hatch", limits = c(-10,74), breaks = c(0,20,40,60,80)) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1.5, hjust=1.25))
 
 g_A / g_D / g_S
@@ -153,5 +160,18 @@ fr_pos <- fr_pos[,-c(1:14)]
 fr_neg <- fr_neg[,-c(1:14)]
 fr_pos_f <- fr_pos[(!apply(fr_pos<(fr_pos_b*1.1),1,all)),]
 fr_neg_f <- fr_neg[(!apply(fr_neg<(fr_neg_b*1.1),1,all)),]
+```
 
+Do transformations (centre and scale) for PCA plot. There is no vsn transformation since there too little sample to base this transformation on.Then plot pca plots.
+```{r}
+fr_pos_ft <- prep.autoscale(t(fr_pos_f), center = TRUE, scale = TRUE)
+fr_neg_ft <- prep.autoscale(t(fr_neg_f), center = TRUE, scale = TRUE)
+meanSdPlot(t(fr_pos_f))
+meanSdPlot(fr_pos_ft)
+meanSdPlot(t(fr_neg_f))
+meanSdPlot(fr_neg_ft)
+
+source("scripts/plotpca.R")
+plotpca2(x = fr_neg_ft) + scale_size(guide = "none")
+plotpca2(x = fr_pos_ft) + scale_size(guide = "none")
 ```

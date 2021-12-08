@@ -31,11 +31,14 @@ filtertrim <- function(x, ep_factor = 1){
     x <- x[,1:100]
   }
   
-  #remove if compound is present in less than 4 samples
-  x_binary <- x
-  x_binary <- apply(x_binary, c(1,2), function(z) {ifelse(any(z > 0), 1, 0)})
-  keep <- as.data.frame(x_binary[rowSums(x_binary) >3,])
-  x_f <- x[row.names(x) %in% row.names(keep),]
+  #remove if feature does not occur in 3 or more samples per genotype
+  xp_design <- read.csv("input/23gt_rootweightsolA.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+  xp_design <- xp_design[xp_design$Number %in% gsub("X","",names(x)),]
+  x_binary <- apply(x, c(1,2), function(z) {ifelse(any(z > 0), 1, 0)}) %>% t() %>% as.data.frame()
+  x_binary$genotype <- xp_design$Genotype.name
+  x_binary2 <- x_binary %>% group_by(genotype) %>% summarise(across(everything(), sum)) %>% column_to_rownames("genotype") %>% t()
+  keep <- x_binary2[apply(x_binary2, 1, function(x) any(x > 2)),]
+  x_f <- x[row.names(x) %in% gsub("V","",row.names(keep)),]
   
   #filter compounds that do not reach above 200 in any sample (column)
   x_f2 <- x_f[!apply(x_f<200,1,all),]

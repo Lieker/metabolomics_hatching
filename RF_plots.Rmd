@@ -1,0 +1,179 @@
+---
+title: "RF plots"
+author: "Lieke Vlaar"
+date: "06/12/2021"
+output: html_document
+---
+
+Necessary packages are loaded
+* ggplot2
+* patchwork
+* ggpmisc
+* extrafont
+* tidyverse
+* dplyr
+* plotrix
+* stringr
+
+```{r include = FALSE}
+if ("knitr" %in% installed.packages()){
+  library("knitr")
+} else {
+  install.packages("knitr")
+  library("knitr")
+}
+```
+
+```{r include=FALSE}
+#########
+# Library
+#########
+if ("checkpoint" %in% installed.packages()){
+  library("checkpoint") # https://cran.r-project.org/web/packages/checkpoint/index.html
+} else {
+  install.packages("checkpoint")
+  suppressPackageStartupMessages(library("checkpoint"))
+  suppressPackageStartupMessages(checkpoint("2021-11-30"))  # all packages in your project will be taken from that date.
+}
+if ("ggplot2" %in% installed.packages()){
+  library("ggplot2")
+} else {
+  BiocManager::install("ggplot2")
+  library("ggplot2")
+}
+if ("patchwork" %in% installed.packages()){
+  library("patchwork")
+} else {
+  BiocManager::install("patchwork")
+  library("patchwork")
+}
+if ("ggpmisc" %in% installed.packages()){
+  library("ggpmisc")
+} else {
+  BiocManager::install("ggpmisc")
+  library("ggpmisc")
+}
+if ("extrafont" %in% installed.packages()){
+  library("extrafont")
+} else {
+  BiocManager::install("extrafont")
+  library("extrafont")
+}
+if ("tidyverse" %in% installed.packages()){
+  library("tidyverse")
+} else {
+  BiocManager::install("tidyverse")
+  library("tidyverse")
+}
+if ("dplyr" %in% installed.packages()){
+  library("dplyr")
+} else {
+  BiocManager::install("dplyr")
+  library("dplyr")
+}
+if ("plotrix" %in% installed.packages()){
+  library("plotrix")
+} else {
+  BiocManager::install("plotrix")
+  library("plotrix")
+}
+if ("stringr" %in% installed.packages()){
+  library("stringr")
+} else {
+  BiocManager::install("stringr")
+  library("stringr")
+}
+```
+
+# Import data
+
+```{r}
+RF_hn <- read.csv("input/211130_VIP_regrModel_Hatching_Neg_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+source("scripts/order_RF_n.R")
+RF_hn <- order_RF_n1(x = RF_hn)
+RF_hn2 <- order_RF_n2(x = RF_hn, y = compounds_exudate_neg, n = "output/RF_hn.csv")[,-c(4,5,8,10:15,17)]
+
+RF_hp <- read.csv("input/211130_VIP_regrModel_Hatching_Pos_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+source("scripts/order_RF_p.R")
+RF_hp <- order_RF_p(x = RF_hp, y = compounds_exudate_pos)[,-c(5,6,8:31)]
+
+RF_sn <- read.csv("input/211130_VIP_regrModel_SolA_Neg_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+RF_sn <- order_RF_n1(x = RF_sn)
+RF_sn2 <- order_RF_n2(x = RF_sn, y = compounds_exudate_neg, n = "output/RF_sn.csv")[,-c(4,5,8,10:15,17)]
+
+RF_sp <- read.csv("input/211130_VIP_regrModel_SolA_Pos_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+RF_sp <- order_RF_p(x = RF_sp, y = compounds_exudate_pos)[,-c(5,6,8:31)]
+```
+
+# Compare with Pearson's correlations
+
+First create lists of top correlating compounds with both hatching and solA. A cut-off of the correlation coefficient of 0.25 was used.
+These functions take a long time to run because of the statistical test involved, so they are run only once, the output is stored in the output/ folder, and can be loaded for the next time. Also, they are saved as Supplemental Table 1 (Table S1) for the manuscript.
+```{r, eval = F}
+source("scripts/correlationlist.R")
+corr_hatching_p <- correlationlist(x = t(exudate_pos_f), interest = "hatching")
+corr_hatching_n <- correlationlist(x = t(exudate_neg_f), interest = "hatching")
+corr_solA_p <- correlationlist(x = t(t(exudate_pos_fr)), interest = "solA")
+corr_solA_n <- correlationlist(x = t(t(exudate_neg_fr)), interest = "solA")
+```
+
+```{r}
+corr_hatching_p <- read.csv("output/corr_hatching_p.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+corr_hatching_n <- read.csv("output/corr_hatching_n.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+corr_solA_p <- read.csv("output/corr_solA_p.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+corr_solA_n <- read.csv("output/corr_solA_n.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+```
+
+Then run the overlap_RF_corr function.
+```{r}
+source("scripts/overlap_RF_corr.R")
+overlap_exups <- overlap_RF_corr(x = RF_sp, y = corr_solA_p)
+overlap_exuns <- overlap_RF_corr(x = RF_sn2, y = corr_solA_n)
+overlap_exuph <- overlap_RF_corr(x = RF_hp, y = corr_hatching_p)
+overlap_exunh <- overlap_RF_corr(x = RF_hn2, y = corr_hatching_n)
+```
+
+# check negative with positive and vice versa
+
+First negative RF with positive corr, then positive RF with negative corr.
+```{r}
+overlap_exunh_withcorrp <- overlap_RF_corr2(x = overlap_exunh, y = corr_hatching_p, yis ="p")
+overlap_exuns_withcorrp <- overlap_RF_corr2(x = overlap_exuns, y = corr_solA_p, yis = "p")
+
+overlap_exuph_withcorrn <- overlap_RF_corr2(x = overlap_exuph, y = corr_hatching_n, yis = "n")
+overlap_exups_withcorrn <- overlap_RF_corr2(x = overlap_exups, y = corr_solA_n, yis = "n")
+```
+
+# Plot RF barplot
+
+```{r, fig.width = 7.3, fig.height = 5.25}
+source("scripts/RF_barplot.R")
+r1 <- RF_barplot(x = overlap_exunh_withcorrp)
+r1
+r1a <- RF_barplot(x = overlap_exunh_withcorrp, hj = -0.2) + ylim(0,0.025)
+r1a
+```
+
+
+```{r, fig.width = 7.3, fig.height = 5.25}
+source("scripts/RF_barplot.R")
+r2 <- RF_barplot(x = overlap_exuph_withcorrn, hj = -0.2)
+r2 + ylim(0,0.69)
+r2 + ylim(0,0.3)
+```
+
+```{r, fig.height = 2.5, fig.width = 7.3}
+r3 <- RF_barplot(x = overlap_exuns_withcorrp)
+r3a <- RF_barplot(x = overlap_exuns_withcorrp, hj = -0.2) + ylim(0,0.05)
+r3
+r3a
+```
+
+```{r, fig.height = 8, fig.width = 7.3}
+r4 <- RF_barplot(x = overlap_exups_withcorrn)
+r4a <- r4 + ylim(0,0.005)
+r4a 
+r4
+```
+
+

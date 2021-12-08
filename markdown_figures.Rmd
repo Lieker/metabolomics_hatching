@@ -175,8 +175,8 @@ Now plot a PCA plot
 
 ```{r, fig.height = 6, fig.width = 8}
 source("scripts/plotpca.R")
-plotpca(x = exudate_neg_frt)
-plotpca(x = exudate_pos_frt)
+plotpca(x = exudate_neg_frt) + scale_size(guide = "none")
+plotpca(x = exudate_pos_frt) + scale_size(guide = "none")
 ```
 
 
@@ -268,7 +268,6 @@ Root extracts are made from 100 mg root, so do not need to be corrected for root
 For PCA, they do need to be scaled and centred.
 ```{r Figure2}
 #scale and centre
-
 source("scripts/scalecentrevsn.R")
 extract_neg_ft <- scalecentrevsn(x = t(extract_neg_f))
 extract_pos_ft <- scalecentrevsn(x = t(extract_pos_f))

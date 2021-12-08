@@ -1,5 +1,5 @@
 scalecentrevsn <- function(x){
-  x_ftrcs <- prep.autoscale(x, center = TRUE, scale = TRUE)
-  x_ftrcsv <- justvsn(x_ftrcs)
+  x_v <- justvsn(x)
+  x_ftrcsv <- prep.autoscale(x_v, center = T, scale = T)
   return(x_ftrcsv)
 }
