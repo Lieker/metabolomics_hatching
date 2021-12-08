@@ -88,21 +88,21 @@ if ("stringr" %in% installed.packages()){
 # Import data
 
 ```{r}
-RF_hn <- read.csv("input/211130_VIP_regrModel_Hatching_Neg_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+RF_hn <- read.csv("input/211130_VIP_regrModel_Hatching_RootExu_Neg_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
 source("scripts/order_RF_n.R")
 RF_hn <- order_RF_n1(x = RF_hn)
 RF_hn2 <- order_RF_n2(x = RF_hn, y = compounds_exudate_neg, n = "output/RF_hn.csv")[,-c(4,5,8,10:15,17)]
 
-RF_hp <- read.csv("input/211130_VIP_regrModel_Hatching_Pos_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+RF_hp <- read.csv("input/211130_VIP_regrModel_Hatching_RootExu_Pos_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
 source("scripts/order_RF_p.R")
-RF_hp <- order_RF_p(x = RF_hp, y = compounds_exudate_pos)[,-c(5,6,8:31)]
+RF_hp <- order_RF_p(x = RF_hp, y = compounds_exudate_pos[,-c(5,6,8:31)], n = "output/RF_hp.csv")
 
-RF_sn <- read.csv("input/211130_VIP_regrModel_SolA_Neg_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+RF_sn <- read.csv("input/211130_VIP_regrModel_SolA_RootExu_Neg_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
 RF_sn <- order_RF_n1(x = RF_sn)
 RF_sn2 <- order_RF_n2(x = RF_sn, y = compounds_exudate_neg, n = "output/RF_sn.csv")[,-c(4,5,8,10:15,17)]
 
-RF_sp <- read.csv("input/211130_VIP_regrModel_SolA_Pos_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
-RF_sp <- order_RF_p(x = RF_sp, y = compounds_exudate_pos)[,-c(5,6,8:31)]
+RF_sp <- read.csv("input/211130_VIP_regrModel_SolA_RootExu_Pos_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+RF_sp <- order_RF_p(x = RF_sp, y = compounds_exudate_pos[,-c(5,6,8:31)], n = "output/RF_sp.csv")
 ```
 
 # Compare with Pearson's correlations
@@ -122,6 +122,12 @@ corr_hatching_p <- read.csv("output/corr_hatching_p.csv", header = TRUE, fileEnc
 corr_hatching_n <- read.csv("output/corr_hatching_n.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
 corr_solA_p <- read.csv("output/corr_solA_p.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
 corr_solA_n <- read.csv("output/corr_solA_n.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+
+source("scripts/add_mz.R")
+corr_hatching_p <- add_mz(x = corr_hatching_p, c = compounds_exudate_pos)
+corr_hatching_n <- add_mz(x = corr_hatching_n, c = compounds_exudate_neg)
+corr_solA_p <- add_mz(x = corr_solA_p, c = compounds_exudate_pos)
+corr_solA_n <- add_mz(x = corr_solA_n, c = compounds_exudate_neg)
 ```
 
 Then run the overlap_RF_corr function.
@@ -146,30 +152,31 @@ overlap_exups_withcorrn <- overlap_RF_corr2(x = overlap_exups, y = corr_solA_n, 
 
 # Plot RF barplot
 
-```{r, fig.width = 7.3, fig.height = 5.25}
+```{r, fig.width = 7.3, fig.height = 3.5}
 source("scripts/RF_barplot.R")
 r1 <- RF_barplot(x = overlap_exunh_withcorrp)
 r1
-r1a <- RF_barplot(x = overlap_exunh_withcorrp, hj = -0.2) + ylim(0,0.025)
+r1a <- RF_barplot(x = overlap_exunh_withcorrp, hj = -0.2) + scale_y_continuous(breaks = c(0, 0.01, 0.02, 0.04), limits = c(0,0.08))
 r1a
 ```
 
 
-```{r, fig.width = 7.3, fig.height = 5.25}
+```{r, fig.width = 7.3, fig.height = 4}
 source("scripts/RF_barplot.R")
-r2 <- RF_barplot(x = overlap_exuph_withcorrn, hj = -0.2)
+r2 <- RF_barplot(x = overlap_exuph_withcorrn)
+r2a <- RF_barplot(x = overlap_exuph_withcorrn, hj = -0.2)
 r2 + ylim(0,0.69)
-r2 + ylim(0,0.3)
+r2a + scale_y_continuous(breaks = c(0, 0.001, 0.002), limits = c(0,0.014))
 ```
 
-```{r, fig.height = 2.5, fig.width = 7.3}
+```{r, fig.height = 10, fig.width = 7.3}
 r3 <- RF_barplot(x = overlap_exuns_withcorrp)
-r3a <- RF_barplot(x = overlap_exuns_withcorrp, hj = -0.2) + ylim(0,0.05)
+r3a <- RF_barplot(x = overlap_exuns_withcorrp, hj = -0.2) + ylim(0,0.01)
 r3
 r3a
 ```
 
-```{r, fig.height = 8, fig.width = 7.3}
+```{r, fig.height = 9, fig.width = 7.3}
 r4 <- RF_barplot(x = overlap_exups_withcorrn)
 r4a <- r4 + ylim(0,0.005)
 r4a 
