@@ -183,4 +183,70 @@ r4a
 r4
 ```
 
+# Root extracts
+
+For root extracts, only RF correlation with solA was significant after permutation, not with hatching. Therefore, we only evaluate RF correlation with solA here.
+
+Import data:
+
+```{r}
+RF_sn_extract <- read.csv("input/211130_VIP_regrModel_SolA_RootExt_Neg_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+RF_sn_extract <- order_RF_n1(x = RF_sn_extract)
+RF_sn_extract2 <- order_RF_n2(x = RF_sn_extract, y = compounds_extract_neg, n = "output/RF_sn_extract.csv")[,-c(4,5,8,10:15,17)]
+
+RF_sp_extract <- read.csv("input/211130_VIP_regrModel_SolA_RootExt_Pos_RF.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+RF_sp_extract <- order_RF_n1(x = RF_sp_extract)
+RF_sp_extract2 <- order_RF_n2(x = RF_sp_extract, y = compounds_extract_pos, n = "output/RF_sp_extract.csv")[,-c(4,5,8,10:15,17)]
+```
+
+Compare with Pearson's correlation
+
+```{r, eval = F}
+source("scripts/correlationlist.R")
+corr_solA_p_extract <- correlationlist(x = t(extract_pos_f), interest = "solA")
+corr_solA_n_extract <- correlationlist(x = t(extract_neg_f), interest = "solA")
+
+#Also do this for hatching, since we need it for suppl Table 1
+corr_hatching_p_extract <- correlationlist(x = t(extract_pos_f), interest = "hatching")
+corr_hatching_n_extract <- correlationlist(x = t(extract_neg_f), interest = "hatching")
+```
+
+```{r}
+corr_solA_p_extract <- read.csv("output/corr_solA_p_extract.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+corr_solA_n_extract <- read.csv("output/corr_solA_n_extract.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+
+source("scripts/add_mz.R")
+corr_solA_p_extract <- add_mz(x = corr_solA_p_extract, c = compounds_extract_pos)
+corr_solA_n_extract <- add_mz(x = corr_solA_n_extract, c = compounds_extract_neg)
+```
+
+Then run the overlap_RF_corr function.
+```{r}
+source("scripts/overlap_RF_corr.R")
+overlap_extps <- overlap_RF_corr(x = RF_sp_extract2, y = corr_solA_p_extract)
+overlap_extns <- overlap_RF_corr(x = RF_sn_extract2, y = corr_solA_n_extract)
+```
+
+check negative with positive and vice versa
+```{r}
+overlap_extns_withcorrp <- overlap_RF_corr2(x = overlap_extns, y = corr_solA_p_extract, yis = "p")
+overlap_extps_withcorrn <- overlap_RF_corr2(x = overlap_extps, y = corr_solA_n_extract, yis = "n")
+```
+
+Then plot bargraphs
+```{r, fig.width = 7.3, fig.height = 3.5}
+source("scripts/RF_barplot.R")
+r5 <- RF_barplot(x = overlap_extns_withcorrp)
+r5
+r5a <- RF_barplot(x = overlap_extns_withcorrp, hj = -0.2) + scale_y_continuous(breaks = c(0, 0.01, 0.02, 0.04), limits = c(0,0.1))
+r5a
+```
+
+```{r, fig.width = 7.3, fig.height = 10}
+source("scripts/RF_barplot.R")
+r6 <- RF_barplot(x = overlap_extps_withcorrn)
+r6
+r6a <- RF_barplot(x = overlap_extps_withcorrn, hj = -0.2) + scale_y_continuous(breaks = c(0, 0.001, 0.002, 0.003), limits = c(0,0.01))
+r6a
+```
 
