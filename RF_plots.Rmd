@@ -122,12 +122,6 @@ corr_hatching_p <- read.csv("output/corr_hatching_p.csv", header = TRUE, fileEnc
 corr_hatching_n <- read.csv("output/corr_hatching_n.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
 corr_solA_p <- read.csv("output/corr_solA_p.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
 corr_solA_n <- read.csv("output/corr_solA_n.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
-
-source("scripts/add_mz.R")
-corr_hatching_p <- add_mz(x = corr_hatching_p, c = compounds_exudate_pos)
-corr_hatching_n <- add_mz(x = corr_hatching_n, c = compounds_exudate_neg)
-corr_solA_p <- add_mz(x = corr_solA_p, c = compounds_exudate_pos)
-corr_solA_n <- add_mz(x = corr_solA_n, c = compounds_exudate_neg)
 ```
 
 Then run the overlap_RF_corr function.

@@ -1,0 +1,20 @@
+"RT..min.","m.z.meas.","M.meas.","Ions","MS.MS","Name","Molecular.Formula","Annotations","AQ","Annotation.Source","Boxplot","Flags","Include","mz_r"
+6.2,309.13389,310.14116,"[M-H]-",TRUE,"","C16H22O6","SmartFormula - mzdev: -0.0005 mSigma: 20.98, ",20100,NA,90,"[]",TRUE,309.13
+5.57,309.13412,310.14139,"[M-H]-",TRUE,"","C11H22N2O8","SmartFormula - mzdev: 0.0038 mSigma: 13.83, ",10200,NA,0,"[]",TRUE,309.13
+6.95,309.13423,310.1415,"[M-H]-",TRUE,"","C16H22O6","SmartFormula - mzdev: -0.0001 mSigma: 27.90, ",20100,NA,104,"[]",TRUE,309.13
+5.8,309.13433,310.14161,"[M-H]-",TRUE,"","C16H22O6","SmartFormula - mzdev: -0.0000 mSigma: Infinity, ",20000,NA,0,"[]",TRUE,309.13
+6.4,309.13445,310.14173,"[M-H]-",TRUE,"","C16H22O6","SmartFormula - mzdev: 0.0001 mSigma: 27.66, ",20100,NA,106,"[]",TRUE,309.13
+7.87,323.14978,324.15706,"[M-H]-",TRUE,"","C17H24O6","SmartFormula - mzdev: -0.0002 mSigma: Infinity, ",20000,NA,354,"[]",TRUE,323.15
+5.68,323.14983,324.15711,"[M-H]-",TRUE,"","","",NA,NA,0,"[]",TRUE,323.15
+6.86,323.14987,324.15715,"[M-H]-",TRUE,"","C17H24O6","SmartFormula - mzdev: -0.0003 mSigma: 17.56, ",20100,NA,180,"[]",TRUE,323.15
+6.4,323.1499,324.15718,"[M-H]-",TRUE,"","C17H24O6","SmartFormula - mzdev: -0.0001 mSigma: Infinity, ",20000,NA,130,"[]",TRUE,323.15
+7.64,323.15005,324.15733,"[M-H]-",TRUE,"","C12H24N2O8","SmartFormula - mzdev: 0.0041 mSigma: 20.69, ",10100,NA,88,"[]",TRUE,323.15
+17.07,377.2725,378.27977,"[M-H]-",TRUE,"","","",NA,NA,1328,"[]",TRUE,377.27
+15.72,387.15082,388.15809,"[M-H]-",TRUE,"","C14H28O12","SmartFormula - mzdev: 0.0000 mSigma: 21.07, ",20100,NA,0,"[]",TRUE,387.15
+17.07,387.15492,388.1622,"[M-H]-",TRUE,"","C15H24N4O8","SmartFormula - mzdev: 0.0025 mSigma: 18.96, ",20100,NA,906,"[]",TRUE,387.15
+8.31,445.22266,446.22994,"[M-H]-",TRUE,"","","",NA,NA,0,"[]",TRUE,445.22
+7.12,445.22268,446.22996,"[M-H]-",TRUE,"","C20H34N2O9","SmartFormula - mzdev: 0.0035 mSigma: 25.65, ",10100,NA,0,"[]",TRUE,445.22
+6.7,497.18199,498.18926,"[M-H]-",TRUE,"solanoeclepin A","C27H30O9","manual",NA,NA,0,"[]",TRUE,497.18
+8.25,515.22833,516.23561,"[M-H]-",TRUE,"","C28H36O9","SmartFormula - mzdev: -0.0003 mSigma: Infinity, ",20000,NA,0,"[]",TRUE,515.23
+7.32,525.17611,526.18339,"[M-H]-",TRUE,"compoundA?","","manual",NA,NA,0,"[]",TRUE,525.18
+5.98,527.15621,528.16349,"[M-H]-",TRUE,"","","",NA,NA,0,"[]",TRUE,527.16

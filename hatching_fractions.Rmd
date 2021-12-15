@@ -282,3 +282,13 @@ c_fr_pos <- correlationlist_fr(x = fr_pos_fc, compounds = compounds_fr_pos)
 c_fr_neg <- correlationlist_fr(x = fr_neg_fc, compounds = compounds_fr_neg)
 ```
 
+Check if some of the high correlators from Pearson and RF are found back in any of the fractions
+
+```{r}
+compounds_fr_pos$mz_r <- round(compounds_fr_pos$m.z.meas., digits = 2)
+overlap_fr_RFcorr_ph <- compounds_fr_pos[compounds_fr_pos$mz_r %in% overlap_exuph_withcorrn$mz_r, ]
+compounds_fr_neg$mz_r <- round(compounds_fr_neg$m.z.meas., digits = 2)
+overlap_fr_RFcorr_nh <- compounds_fr_neg[compounds_fr_neg$mz_r %in% overlap_exunh_withcorrp$mz_r, ]
+overlap_fr_RFcorr_ps <- compounds_fr_pos[compounds_fr_pos$mz_r %in% overlap_exups_withcorrn$mz_r, ]
+overlap_fr_RFcorr_ns <- compounds_fr_neg[compounds_fr_neg$mz_r %in% overlap_exuns_withcorrp$mz_r, ]
+```

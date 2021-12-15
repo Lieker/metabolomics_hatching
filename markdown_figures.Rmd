@@ -240,7 +240,22 @@ d <- rbind(d1,d2,d3,d4)
 write.csv(d, "output/correlatingcompounds.csv")
 ```
 
+## Make plot of only compound 525.18 (-)
 
+```{r}
+exudate1997 <- exudate_neg_fr %>% t() %>% as.data.frame()
+exudate1997 <- exudate1997[row.names(exudate1997) == "1997",] %>% t() %>% as.data.frame()
+names(exudate1997) <- "counts"
+exudate1997$genotype <- xp_design$Genotype.name[1:100]
+exudate1997sum <- exudate1997 %>% group_by(genotype) %>% summarize(meancounts = mean(counts))
+ggplot(data = exudate1997sum, aes(x = genotype, y = meancounts)) +
+  geom_bar(stat = "identity", fill = "grey", colour = "black") +
+  geom_point(data = exudate1997, aes(x = genotype, y = counts)) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ylab("counts") + xlab("")
+  
+```
 
 
 # Root extracts (Figure 4)

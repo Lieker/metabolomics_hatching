@@ -1,0 +1,41 @@
+"RT..min.","m.z.meas.","M.meas.","Ions","MS.MS","Name","Molecular.Formula","Annotations","AQ","Annotation.Source","Boxplot","Flags","Include","mz_r"
+19.27,87.04397,86.03669,"[M+H]+",FALSE,"","C4H6O2","SmartFormula - mzdev: -0.0001 mSigma: Infinity, ","20000","",0,"[]",TRUE,87.04
+19.58,158.1534,157.14612,"[M+H]+",TRUE,"","C9H19NO","SmartFormula - mzdev: -0.0006 mSigma: 6.53, ","20200","",2184,"[]",TRUE,158.15
+9.33,158.15346,157.14619,"[M+H]+",TRUE,"","C9H19NO","SmartFormula - mzdev: -0.0005 mSigma: 10.08, ","20200","",1894,"[]",TRUE,158.15
+11.54,158.15375,157.14648,"[M+H]+",TRUE,"","C9H19NO","SmartFormula - mzdev: -0.0002 mSigma: Infinity, ","20000","",0,"[]",TRUE,158.15
+14.57,158.15391,157.14664,"[M+H]+",TRUE,"","C9H19NO","SmartFormula - mzdev: -0.0000 mSigma: Infinity, ","20000","",0,"[]",TRUE,158.15
+5.79,207.10115,206.09388,"[M+H]+",TRUE,"","C12H14O3","SmartFormula - mzdev: -0.0002 mSigma: 16.80, ","20100","",166,"[]",TRUE,207.1
+8.43,207.10131,206.09403,"[M+H]+",TRUE,"","C12H14O3","SmartFormula - mzdev: -0.0004 mSigma: 21.42, ","20100","",186,"[]",TRUE,207.1
+6.23,249.11114,248.10386,"[M+H]+",TRUE,"","C14H16O4","SmartFormula - mzdev: -0.0010 mSigma: Infinity, ","20000","",138,"[]",TRUE,249.11
+5.68,249.1118,248.10453,"[M+H]+",TRUE,"","C14H16O4","SmartFormula - mzdev: -0.0003 mSigma: Infinity, ","20000","",0,"[]",TRUE,249.11
+16.07,261.12613,260.11886,"[M+H]+",FALSE,"","","","","",0,"[]",TRUE,261.13
+13.14,261.12858,260.1213,"[M+H]+",TRUE,"","C7H20N2O8","SmartFormula - mzdev: -0.0006 mSigma: 19.61, ","20100","",686,"[]",TRUE,261.13
+19.4,261.12911,260.12183,"[M+H]+",FALSE,"","C7H20N2O8","SmartFormula - mzdev: 0.0012 mSigma: 12.72, ","20200","",1736,"[]",TRUE,261.13
+3.43,261.13021,260.12293,"[M+H]+",TRUE,"","C7H20N2O8","SmartFormula - mzdev: 0.0014 mSigma: 14.45, ","20200","",1010,"[]",TRUE,261.13
+15.15,261.13026,260.12298,"[M+H]+",TRUE,"","C7H20N2O8","SmartFormula - mzdev: 0.0010 mSigma: Infinity, ","20000","",0,"[]",TRUE,261.13
+14.93,261.13028,260.12301,"[M+H]+",FALSE,"","C7H20N2O8","SmartFormula - mzdev: 0.0010 mSigma: Infinity, ","20000","",0,"[]",TRUE,261.13
+19.19,261.13034,260.12306,"[M+H]+",FALSE,"","C7H20N2O8","SmartFormula - mzdev: 0.0011 mSigma: Infinity, ","20000","",1646,"[]",TRUE,261.13
+18.55,261.1304,260.12312,"[M+H]+",FALSE,"","C7H20N2O8","SmartFormula - mzdev: 0.0012 mSigma: Infinity, ","20000","",1288,"[]",TRUE,261.13
+14.64,261.13054,260.12326,"[M+H]+",TRUE,"","C19H16O","SmartFormula - mzdev: 0.0030 mSigma: 15.30, ","20100","",292,"[]",TRUE,261.13
+14.37,261.13067,260.1234,"[M+H]+",TRUE,"","C7H20N2O8","SmartFormula - mzdev: 0.0014 mSigma: Infinity, ","20000","",558,"[]",TRUE,261.13
+13.87,261.13068,260.12341,"[M+H]+",TRUE,"","C7H20N2O8","SmartFormula - mzdev: 0.0014 mSigma: Infinity, ","20000","",480,"[]",TRUE,261.13
+19.71,261.13068,260.1234,"[M+H]+",TRUE,"","C12H20O6","SmartFormula - mzdev: -0.0025 mSigma: 13.59, ","20200","",1768,"[]",TRUE,261.13
+15.68,261.13075,260.12347,"[M+H]+",TRUE,"","C19H16O","SmartFormula - mzdev: 0.0035 mSigma: 13.11, ","10200","",0,"[]",TRUE,261.13
+18.83,261.13078,260.1235,"[M+H]+",TRUE,"","C12H20O6","SmartFormula - mzdev: -0.0025 mSigma: 16.33, ","20100","",1500,"[]",TRUE,261.13
+13.36,261.13085,260.12358,"[M+H]+",FALSE,"","C7H20N2O8","SmartFormula - mzdev: 0.0016 mSigma: Infinity, ","20000","",466,"[]",TRUE,261.13
+13.65,261.1311,260.12382,"[M+H]+",TRUE,"","C12H20O6","SmartFormula - mzdev: -0.0022 mSigma: 17.75, ","20100","",486,"[]",TRUE,261.13
+15.45,261.13116,260.12388,"[M+H]+",FALSE,"","","","","",0,"[]",TRUE,261.13
+12.76,289.15295,266.16376,"[M+Na]+, [M+H]+",TRUE,"","C14H22N2O3","SmartFormula - mzdev: 0.0014 mSigma: 14.86, ","20200","",18254,"[]",TRUE,289.15
+7.87,307.15334,306.14607,"[M+H]+",TRUE,"","C12H22N2O7","SmartFormula - mzdev: 0.0034 mSigma: 18.07, ","10100","",234,"[]",TRUE,307.15
+6.39,307.15339,306.14612,"[M+H]+",TRUE,"","C17H22O5","SmartFormula - mzdev: -0.0007 mSigma: 21.70, ","20100","",174,"[]",TRUE,307.15
+5.87,307.15358,306.14631,"[M+H]+",TRUE,"","","","","",0,"[]",TRUE,307.15
+5.59,307.15362,306.14634,"[M+H]+",TRUE,"","","","","",0,"[]",TRUE,307.15
+7.09,319.15323,318.14595,"[M+H]+",TRUE,"","C18H22O5","SmartFormula - mzdev: -0.0008 mSigma: 18.89, ","20100","",172,"[]",TRUE,319.15
+8.18,319.15332,318.14605,"[M+H]+",TRUE,"","C18H22O5","SmartFormula - mzdev: -0.0007 mSigma: 29.23, ","20100","",100,"[]",TRUE,319.15
+6.65,319.15344,318.14617,"[M+H]+",TRUE,"","C18H22O5","SmartFormula - mzdev: -0.0006 mSigma: 17.01, ","20100","",0,"[]",TRUE,319.15
+6.34,319.15358,318.14631,"[M+H]+",TRUE,"","","","","",0,"[]",TRUE,319.15
+10.58,327.00787,326.00059,"[M+H]+, [M+Na]+",TRUE,"","C11H6N2O10","SmartFormula - mzdev: -0.0017 mSigma: 29.61, ","20100","",4470,"[]",TRUE,327.01
+19.55,327.00807,978.00239,"[M+H+H2]3+",FALSE,"","","","","",0,"[]",TRUE,327.01
+7.12,335.18467,334.1774,"[M+H]+",TRUE,"","C19H26O5","SmartFormula - mzdev: -0.0006 mSigma: Infinity, ","20000","",0,"[]",TRUE,335.18
+7.94,335.18485,334.17757,"[M+H]+",TRUE,"","C19H26O5","SmartFormula - mzdev: -0.0005 mSigma: Infinity, ","20000","",124,"[]",TRUE,335.18
+7.39,335.18487,334.1776,"[M+H]+",TRUE,"","","","","",0,"[]",TRUE,335.18
