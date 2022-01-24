@@ -187,11 +187,11 @@ Make plots showing counts for interesting compounds from previous correlation an
 ```{r}
 # make list of compounds of interest in positive and negative mode
 int_p <- c("3786")
-int_n <- c("1621", "1619", "1665")
+int_n <- c("1621", "1665")
 fr_n_subset <- fr_neg_f[row.names(fr_neg_f) %in% int_n, ] %>% t() %>% as.data.frame() %>% rownames_to_column("sample")
 fr_n_subset <- melt(fr_n_subset, value = "sample")
-fr_n_subset$genotype <- rep(c(rep("Avatar", 4), rep("Desiree", 4), rep("Seresta", 4)), 3)
-fr_n_subset$fraction <- rep(c("F08","F09","F10","F11"), 9)
+fr_n_subset$genotype <- rep(c(rep("Avatar", 4), rep("Desiree", 4), rep("Seresta", 4)), 2)
+fr_n_subset$fraction <- rep(c("F08","F09","F10","F11"), 6)
 fr_n_subset$sample <- paste0(fr_n_subset$genotype, "_", fr_n_subset$fraction)
 
 pn <- ggplot(fr_n_subset, aes(x = fraction, y = value)) +
@@ -200,7 +200,7 @@ pn <- ggplot(fr_n_subset, aes(x = fraction, y = value)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         axis.title.x=element_blank()) +
   ylab("counts") +
-  scale_colour_discrete(name = "feature", labels = c("m/z 497.11, Rt 7.67", "m/z 497.18, Rt 6.70", "m/z 525.18, Rt 7.32")) +
+  scale_colour_discrete(name = "feature", labels = c("m/z 497.18, Rt 6.70", "m/z 525.18, Rt 7.32")) +
   ggtitle("Negative mode") +
   facet_grid(. ~ genotype)
 pn
@@ -223,8 +223,8 @@ pp <- ggplot(fr_p_subset, aes(x = fraction, y = value)) +
 pp
 
 fr_subset <- rbind(fr_n_subset, fr_p_subset)
-fr_subset$mode <- c(rep("negative", 36), rep("positive", 12))
-fr_subset$label <- c(rep("m/z 497.11 (-), Rt 7.67", 12), rep("m/z 497.18 (-), Rt 6.70", 12), rep("m/z 525.18 (-), Rt 7.32", 12), rep("m/z 499.20 (+), Rt 6.69", 12))
+fr_subset$mode <- c(rep("negative", 24), rep("positive", 12))
+fr_subset$label <- c(rep("m/z 497.18 (-), Rt 6.70", 12), rep("m/z 525.18 (-), Rt 7.32", 12), rep("m/z 499.20 (+), Rt 6.69", 12))
 
 # add hatch data
 toMatch <- c("f08", "f09", "f10", "f11")
@@ -245,11 +245,11 @@ ppn <- ggplot(fr_subset, aes(x = fraction, y = value)) +
   facet_grid(. ~ genotype)+ 
   geom_bar(data = hatch_s_subset,
                aes(x = fraction, 
-                   y = (mean_hatch*37.5)),
+                   y = (mean_hatch*25)),
                stat = "identity", 
                fill = "gray",
            alpha = 0.5) +
-  scale_y_continuous(sec.axis = sec_axis(trans=~./37.5,
+  scale_y_continuous(sec.axis = sec_axis(trans=~./25,
                                          name="hatching (%)",
                                          breaks = c(0, 20, 40, 60, 80)))
 ppn

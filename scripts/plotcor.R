@@ -1,4 +1,4 @@
-plotcor <- function(x){
+plotcor <- function(x, t = testRes){
   corrplot(x, 
              order = "hclust", 
              diag = F,
@@ -7,7 +7,7 @@ plotcor <- function(x){
              type = "lower",
              number.cex = 0.8,
              cl.pos = 'b', 
-             p.mat = testRes$p, 
+             p.mat = t, 
              sig.level = c(0.001, 0.01, 0.05),
              insig = "label_sig",
              pch.cex = 1,

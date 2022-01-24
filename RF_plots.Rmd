@@ -108,20 +108,19 @@ RF_sp <- order_RF_p(x = RF_sp, y = compounds_exudate_pos[,-c(5,6,8:31)], n = "ou
 # Compare with Pearson's correlations
 
 First create lists of top correlating compounds with both hatching and solA. A cut-off of the correlation coefficient of 0.25 was used.
-These functions take a long time to run because of the statistical test involved, so they are run only once, the output is stored in the output/ folder, and can be loaded for the next time. Also, they are saved as Supplemental Table 1 (Table S1) for the manuscript.
+Also, they are saved as Supplemental Table 1 (Table S1) for the manuscript.
 ```{r, eval = F}
 source("scripts/correlationlist.R")
-corr_hatching_p <- correlationlist(x = t(exudate_pos_f), interest = "hatching")
-corr_hatching_n <- correlationlist(x = t(exudate_neg_f), interest = "hatching")
-corr_solA_p <- correlationlist(x = t(t(exudate_pos_fr)), interest = "solA")
-corr_solA_n <- correlationlist(x = t(t(exudate_neg_fr)), interest = "solA")
-```
+corr_hatching_p <- correlationlist(x = t(exudate_pos_f), interest = "hatching", mode = "+", ex = "exudate")
+corr_hatching_n <- correlationlist(x = t(exudate_neg_f), interest = "hatching", mode = "-", ex = "exudate")
+corr_solA_p <- correlationlist(x = t(t(exudate_pos_fr)), interest = "solA", mode = "+", ex = "exudate")
+corr_solA_n <- correlationlist(x = t(t(exudate_neg_fr)), interest = "solA", mode = "-", ex = "exudate")
 
-```{r}
-corr_hatching_p <- read.csv("output/corr_hatching_p.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
-corr_hatching_n <- read.csv("output/corr_hatching_n.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
-corr_solA_p <- read.csv("output/corr_solA_p.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
-corr_solA_n <- read.csv("output/corr_solA_n.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
+source("scripts/add_mz.R")
+corr_solA_p <- add_mz(x = corr_solA_p, c = compounds_exudate_pos)
+corr_solA_n <- add_mz(x = corr_solA_n, c = compounds_exudate_neg)
+corr_hatching_p <- add_mz(x = corr_hatching_p, c = compounds_exudate_pos)
+corr_hatching_n <- add_mz(x = corr_hatching_n, c = compounds_exudate_neg)
 ```
 
 Then run the overlap_RF_corr function.
@@ -146,7 +145,7 @@ overlap_exups_withcorrn <- overlap_RF_corr2(x = overlap_exups, y = corr_solA_n, 
 
 # Plot RF barplot
 
-```{r, fig.width = 7.3, fig.height = 3.5}
+```{r, fig.width = 6, fig.height = 3.5}
 source("scripts/RF_barplot.R")
 r1 <- RF_barplot(x = overlap_exunh_withcorrp)
 r1
@@ -155,22 +154,22 @@ r1a
 ```
 
 
-```{r, fig.width = 7.3, fig.height = 4}
+```{r, fig.width = 6, fig.height = 4}
 source("scripts/RF_barplot.R")
 r2 <- RF_barplot(x = overlap_exuph_withcorrn)
 r2a <- RF_barplot(x = overlap_exuph_withcorrn, hj = -0.2)
 r2 + ylim(0,0.69)
-r2a + scale_y_continuous(breaks = c(0, 0.001, 0.002), limits = c(0,0.014))
+r2a + scale_y_continuous(breaks = c(0, 0.002), limits = c(0,0.014))
 ```
 
-```{r, fig.height = 10, fig.width = 7.3}
+```{r, fig.height = 10, fig.width = 6}
 r3 <- RF_barplot(x = overlap_exuns_withcorrp)
 r3a <- RF_barplot(x = overlap_exuns_withcorrp, hj = -0.2) + ylim(0,0.01)
 r3
 r3a
 ```
 
-```{r, fig.height = 9, fig.width = 7.3}
+```{r, fig.height = 9, fig.width = 6}
 r4 <- RF_barplot(x = overlap_exups_withcorrn)
 r4a <- r4 + ylim(0,0.005)
 r4a 
@@ -197,18 +196,15 @@ Compare with Pearson's correlation
 
 ```{r, eval = F}
 source("scripts/correlationlist.R")
-corr_solA_p_extract <- correlationlist(x = t(extract_pos_f), interest = "solA")
-corr_solA_n_extract <- correlationlist(x = t(extract_neg_f), interest = "solA")
+corr_solA_p_extract <- correlationlist(x = t(extract_pos_f), interest = "solA", mode = "+", ex = "extract")
+corr_solA_n_extract <- correlationlist(x = t(extract_neg_f), interest = "solA", mode = "-", ex = "extract")
 
 #Also do this for hatching, since we need it for suppl Table 1
-corr_hatching_p_extract <- correlationlist(x = t(extract_pos_f), interest = "hatching")
-corr_hatching_n_extract <- correlationlist(x = t(extract_neg_f), interest = "hatching")
+corr_hatching_p_extract <- correlationlist(x = t(extract_pos_f), interest = "hatching", mode = "+", ex = "extract")
+corr_hatching_n_extract <- correlationlist(x = t(extract_neg_f), interest = "hatching", mode = "-", ex = "extract")
 ```
 
 ```{r}
-corr_solA_p_extract <- read.csv("output/corr_solA_p_extract.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
-corr_solA_n_extract <- read.csv("output/corr_solA_n_extract.csv", header = TRUE, fileEncoding = "UTF-8-BOM")
-
 source("scripts/add_mz.R")
 corr_solA_p_extract <- add_mz(x = corr_solA_p_extract, c = compounds_extract_pos)
 corr_solA_n_extract <- add_mz(x = corr_solA_n_extract, c = compounds_extract_neg)

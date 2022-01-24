@@ -113,7 +113,7 @@ ggplot(data = xp_design_f, aes(x = conc.forhatching.nM, y = Hatching)) +
 
 ```
 
-# Figure 2
+# Figure 3
 
 First we need to import,  trim and filter the data
 ```{r importfiltertrim}
@@ -195,17 +195,37 @@ names(c_neg) <- c("Rt","mz","Name")
 
 #get corr dfs
 source("scripts/ordermatrixforcorplot.R")
-c_exup_sol <- ordermatrixforcorplot(x = exudate_pos_fr, interest = "solA", compounds = c_pos)
-c_exun_sol <- ordermatrixforcorplot(x = exudate_neg_fr, interest = "solA", compounds = c_neg)
+c_exup_sol <- ordermatrixforcorplot(x = exudate_pos_fr, interest = "solA_UHPLC", compounds = c_pos)
+c_exun_sol <- ordermatrixforcorplot(x = exudate_neg_fr, interest = "solA_UHPLC", compounds = c_neg)
+```
+
+Getting testRes results takes very long, therefore they were run once and saved in output, but they can be newly obtained from this snippet:
+```{r, eval=F}
+c0_exup_sol <- ordermatrixforcorplot2(x = exudate_pos_fr, interest = "solA_UHPLC", compounds = c_pos)
+testRes_c_exup_sol <- cor.mtest(as.data.frame(c0_exup_sol), conf.level = 0.95)
+testRes_c_exup_sol <- as.data.frame(testRes_c_exup_sol$p)
+c0_exun_sol <- ordermatrixforcorplot2(x = exudate_neg_fr, interest = "solA_UHPLC", compounds = c_neg)
+testRes_c_exun_sol <- cor.mtest(as.data.frame(c0_exun_sol), conf.level = 0.95)
+testRes_c_exun_sol <- as.data.frame(testRes_c_exun_sol$p)
+```
+
+Import the testRes dfs, then draw the correlation plot:
+```{r, fig.height = 5.5, fig.width = 5.5}
+#import testRes dfs
+testRes_c_exup_sol <- read.csv("output/testRes_c_exup_sol.csv", header = TRUE, fileEncoding = "UTF-8-BOM") %>% column_to_rownames("X")
+names(testRes_c_exup_sol) <- row.names(testRes_c_exup_sol)
+testRes_c_exun_sol <- read.csv("output/testRes_c_exun_sol.csv", header = TRUE, fileEncoding = "UTF-8-BOM") %>% column_to_rownames("X")
+names(testRes_c_exun_sol) <- row.names(testRes_c_exun_sol)
+#get the subset necessary for the plot:
+source("scripts/ordermatrixforcorplot.R")
+testRes_c_exup_sol_subset <- get_testRes(x = exudate_pos_fr, interest = "solA_UHPLC", compounds = c_pos, t = testRes_c_exup_sol)
+testRes_c_exun_sol_subset <- get_testRes(x = exudate_neg_fr, interest = "solA_UHPLC", compounds = c_neg, t = testRes_c_exun_sol)
 
 #plot corplot
 source("scripts/plotcor.R")
-testRes = cor.mtest(c_exup_sol, conf.level = 0.95)
-corplot_exup_sol <- plotcor(x = c_exup_sol)
-testRes = cor.mtest(c_exun_sol, conf.level = 0.95)
-corplot_exun_sol <- plotcor(x = c_exun_sol)
+corplot_exup_sol <- plotcor(x = c_exup_sol, t = testRes_c_exup_sol_subset)
+corplot_exun_sol <- plotcor(x = c_exun_sol, t = testRes_c_exun_sol_subset)
 ```
-
 
 
 
@@ -216,13 +236,34 @@ Correlation of hatching with unknown metabolites (not corrected for root weight)
 source("scripts/ordermatrixforcorplot.R")
 c_exup_hatching <- ordermatrixforcorplot(x = t(exudate_pos_f), interest = "hatching", compounds = c_pos)
 c_exun_hatching <- ordermatrixforcorplot(x = t(exudate_neg_f), interest = "hatching", compounds = c_neg)
+```
+
+Getting testRes results takes very long, therefore they were run once and saved in output, but they can be newly obtained from this snippet:
+```{r, eval=F}
+c0_exup_hatching <- ordermatrixforcorplot2(x = t(exudate_pos_f), interest = "hatching", compounds = c_pos)
+testRes_c_exup_hatching <- cor.mtest(as.data.frame(c0_exup_hatching), conf.level = 0.95)
+testRes_c_exup_hatching <- as.data.frame(testRes_c_exup_hatching$p)
+c0_exun_hatching <- ordermatrixforcorplot2(x = t(exudate_neg_f), interest = "hatching", compounds = c_neg)
+testRes_c_exun_hatching <- cor.mtest(as.data.frame(c0_exun_hatching), conf.level = 0.95)
+testRes_c_exun_hatching <- as.data.frame(testRes_c_exun_hatching$p)
+```
+
+Import the testRes dfs, then draw the correlation plot:
+```{r, fig.height = 5.5, fig.width = 5.5}
+#import testRes dfs
+testRes_c_exup_hatching <- read.csv("output/testRes_c_exup_hatching.csv", header = TRUE, fileEncoding = "UTF-8-BOM") %>% column_to_rownames("X")
+names(testRes_c_exup_hatching) <- row.names(testRes_c_exup_hatching)
+testRes_c_exun_hatching <- read.csv("output/testRes_c_exun_hatching.csv", header = TRUE, fileEncoding = "UTF-8-BOM") %>% column_to_rownames("X")
+names(testRes_c_exun_hatching) <- row.names(testRes_c_exun_hatching)
+#get the subset necessary for the plot:
+source("scripts/ordermatrixforcorplot.R")
+testRes_c_exup_hatching_subset <- get_testRes(x = t(exudate_pos_f), interest = "hatching", compounds = c_pos, t = testRes_c_exup_hatching)
+testRes_c_exun_hatching_subset <- get_testRes(x = t(exudate_neg_f), interest = "hatching", compounds = c_neg, t = testRes_c_exun_hatching)
 
 #plot corplot
 source("scripts/plotcor.R")
-testRes = cor.mtest(c_exup_hatching, conf.level = 0.95)
-corplot_exup_hatching <- plotcor(x = c_exup_hatching)
-testRes = cor.mtest(c_exun_hatching, conf.level = 0.95)
-corplot_exun_hatching <- plotcor(x = c_exun_hatching)
+corplot_exup_hatching <- plotcor(x = c_exup_hatching, t = testRes_c_exup_hatching_subset)
+corplot_exun_hatching <- plotcor(x = c_exun_hatching, t = testRes_c_exun_hatching_subset)
 ```
 
 Make a list of all the compounds that correlate with solA concentration and hatching
@@ -304,7 +345,7 @@ plotpca(x = extract_pos_ft) + scale_size(guide = "none")
 
 ## correlation plots root extracts
 
-```{r corrplot, fig.height = 8, fig.width = 8}
+```{r corrplot}
 #make compounds dfs for pos and neg
 c_pos_extr <- compounds_extract_pos[, c(1,2,6)]
 names(c_pos_extr) <- c("Rt","mz","Name")
@@ -313,15 +354,36 @@ names(c_neg_extr) <- c("Rt","mz","Name")
 
 #get corr dfs
 source("scripts/ordermatrixforcorplot.R")
-c_extp_sol <- ordermatrixforcorplot(x = t(extract_pos_f), interest = "solA", compounds = c_pos_extr)
-c_extn_sol <- ordermatrixforcorplot(x = t(extract_neg_f), interest = "solA", compounds = c_neg_extr)
+c_extp_sol <- ordermatrixforcorplot(x = t(extract_pos_f), interest = "solA_UHPLC", compounds = c_pos_extr)
+c_extn_sol <- ordermatrixforcorplot(x = t(extract_neg_f), interest = "solA_UHPLC", compounds = c_neg_extr)
+```
+
+Getting testRes results takes very long, therefore they were run once and saved in output, but they can be newly obtained from this snippet:
+```{r, eval=F}
+c0_extp_sol <- ordermatrixforcorplot2(x = t(extract_pos_f), interest = "solA_UHPLC", compounds = c_pos)
+testRes_c_extp_sol <- cor.mtest(as.data.frame(c0_extp_sol), conf.level = 0.95)
+testRes_c_extp_sol <- as.data.frame(testRes_c_extp_sol$p)
+c0_extn_sol <- ordermatrixforcorplot2(x = t(extract_neg_f), interest = "solA_UHPLC", compounds = c_neg)
+testRes_c_extn_sol <- cor.mtest(as.data.frame(c0_extn_sol), conf.level = 0.95)
+testRes_c_extn_sol <- as.data.frame(testRes_c_extn_sol$p)
+```
+
+Import the testRes dfs, then draw the correlation plot:
+```{r, fig.height = 5.5, fig.width = 5.5}
+#import testRes dfs
+testRes_c_extp_sol <- read.csv("output/testRes_c_extp_sol.csv", header = TRUE, fileEncoding = "UTF-8-BOM") %>% column_to_rownames("X")
+names(testRes_c_extp_sol) <- row.names(testRes_c_extp_sol)
+testRes_c_extn_sol <- read.csv("output/testRes_c_extn_sol.csv", header = TRUE, fileEncoding = "UTF-8-BOM") %>% column_to_rownames("X")
+names(testRes_c_extn_sol) <- row.names(testRes_c_extn_sol)
+#get the subset necessary for the plot:
+source("scripts/ordermatrixforcorplot.R")
+testRes_c_extp_sol_subset <- get_testRes(x = t(extract_pos_f), interest = "solA_UHPLC", compounds = c_pos_extr, t = testRes_c_extp_sol)
+testRes_c_extn_sol_subset <- get_testRes(x = t(extract_neg_f), interest = "solA_UHPLC", compounds = c_neg_extr, t = testRes_c_extn_sol)
 
 #plot corplot
 source("scripts/plotcor.R")
-testRes = cor.mtest(c_extp_sol, conf.level = 0.95)
-corplot_extp_sol <- plotcor(x = c_extp_sol)
-testRes = cor.mtest(c_extn_sol, conf.level = 0.95)
-corplot_extn_sol <- plotcor(x = c_extn_sol)
+corplot_extp_sol <- plotcor(x = c_extp_sol, t = testRes_c_extp_sol_subset)
+corplot_extn_sol <- plotcor(x = c_extn_sol, t = testRes_c_extn_sol_subset)
 ```
 
 ```{r corr_hatching_vs_metabolites, fig.height = 8, fig.width = 8}
@@ -329,11 +391,32 @@ corplot_extn_sol <- plotcor(x = c_extn_sol)
 source("scripts/ordermatrixforcorplot.R")
 c_extp_hatching <- ordermatrixforcorplot(x = t(extract_pos_f), interest = "hatching", compounds = c_pos_extr)
 c_extn_hatching <- ordermatrixforcorplot(x = t(extract_neg_f), interest = "hatching", compounds = c_neg_extr)
+```
+
+Getting testRes results takes very long, therefore they were run once and saved in output, but they can be newly obtained from this snippet:
+```{r, eval=F}
+c0_extp_hatching <- ordermatrixforcorplot2(x = t(extract_pos_f), interest = "hatching", compounds = c_pos)
+testRes_c_extp_hatching <- cor.mtest(as.data.frame(c0_extp_hatching), conf.level = 0.95)
+testRes_c_extp_hatching <- as.data.frame(testRes_c_extp_hatching$p)
+c0_extn_hatching <- ordermatrixforcorplot2(x = t(extract_neg_f), interest = "hatching", compounds = c_neg)
+testRes_c_extn_hatching <- cor.mtest(as.data.frame(c0_extn_hatching), conf.level = 0.95)
+testRes_c_extn_hatching <- testRes_c_extn_hatching$p
+```
+
+Import the testRes dfs, then draw the correlation plot:
+```{r, fig.height = 5.5, fig.width = 5.5}
+#import testRes dfs
+testRes_c_extp_hatching <- read.csv("output/testRes_c_extp_hatching.csv", header = TRUE, fileEncoding = "UTF-8-BOM")%>% column_to_rownames("X")
+names(testRes_c_extp_hatching) <- row.names(testRes_c_extp_hatching)
+testRes_c_extn_hatching <- read.csv("output/testRes_c_extn_hatching.csv", header = TRUE, fileEncoding = "UTF-8-BOM") %>%column_to_rownames("X")
+names(testRes_c_extn_hatching) <- row.names(testRes_c_extn_hatching)
+#get the subset necessary for the plot:
+source("scripts/ordermatrixforcorplot.R")
+testRes_c_extp_hatching_subset <- get_testRes(x = t(extract_pos_f), interest = "hatching", compounds = c_pos_extr, t = testRes_c_extp_hatching)
+testRes_c_extn_hatching_subset <- get_testRes(x = t(extract_neg_f), interest = "hatching", compounds = c_neg_extr, t = testRes_c_extn_hatching)
 
 #plot corplot
 source("scripts/plotcor.R")
-testRes = cor.mtest(c_extp_hatching, conf.level = 0.95)
-corplot_extp_hatching <- plotcor(x = c_extp_hatching)
-testRes = cor.mtest(c_extn_hatching, conf.level = 0.95)
-corplot_extn_hatching <- plotcor(x = c_extn_hatching)
+corplot_extp_hatching <- plotcor(x = c_extp_hatching, t = testRes_c_extp_hatching_subset)
+corplot_extn_hatching <- plotcor(x = c_extn_hatching, t = testRes_c_extn_hatching_subset)
 ```

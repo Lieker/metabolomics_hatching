@@ -2,3 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
+
+output/testRes_c_extp_hatching.csv
+output/testRes_c_extp_sol.csv
+output/testRes_c_exup_hatching.csv
+output/testRes_c_exup_sol.csv
+output/testRes_c_exun_hatching.csv
+output/testRes_c_exun_sol.csv

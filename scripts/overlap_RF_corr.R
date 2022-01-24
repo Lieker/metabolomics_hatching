@@ -9,19 +9,19 @@ overlap_RF_corr <- function(x, y){
 
 overlap_RF_corr2 <- function(x, y, yis){
   if(yis == "p"){
-    names(x)[names(x) %in% c("hatching","solA")] <- "corr.coef"
+    names(x)[names(x) %in% c("hatching","solA_UHPLC")] <- "corr.coef"
     y$m <- round((y$mz - 2), digits = 1)
     x$m <- round(as.numeric(x$mz_r), digits = 1)
-    y1 <- y[,names(y) %in% c("hatching", "solA", "m","pvalue")]
+    y1 <- y[,names(y) %in% c("hatching", "solA_UHPLC", "m","pvalue")]
     names(y1) <- c("corr.coef2","pvalue2","m")
     x <- left_join(x, y1, by = "m")
     x <- x %>% dplyr::select(-m)
     return(x)
   } else if(yis == "n"){
-    names(x)[names(x) %in% c("hatching","solA")] <- "corr.coef"
+    names(x)[names(x) %in% c("hatching","solA_UHPLC")] <- "corr.coef"
     y$m <- round((y$mz + 2), digits = 1)
     x$m <- round(as.numeric(x$mz_r), digits = 1)
-    y1 <- y[,names(y) %in% c("hatching", "solA","m","pvalue")]
+    y1 <- y[,names(y) %in% c("hatching", "solA_UHPLC","m","pvalue")]
     names(y1) <- c("corr.coef2", "pvalue2", "m")
     x <- left_join(x, y1, by = "m")
     x <- x %>% dplyr::select(-m)
