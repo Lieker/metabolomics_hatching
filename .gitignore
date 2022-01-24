@@ -9,3 +9,5 @@ output/testRes_c_exup_hatching.csv
 output/testRes_c_exup_sol.csv
 output/testRes_c_exun_hatching.csv
 output/testRes_c_exun_sol.csv
+output/testRes_c_fr_p_h.csv
+output/testRes_c_fr_n_h.csv

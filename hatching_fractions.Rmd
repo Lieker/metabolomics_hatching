@@ -262,16 +262,34 @@ Do correlation analysis on fractionation data (correlate with hatching only)
 fr_pos_fc <- as.data.frame(t(fr_pos_f))
 source("scripts/ordermatrixforcorplot_fr.R")
 cor_fr_p <- ordermatrixforcorplot_fr(x = fr_pos_fc, compounds = compounds_fr_pos)
-source("scripts/plotcor.R")
-testRes = cor.mtest(cor_fr_p, conf.level = 0.95)
-corplot_fr_p <- plotcor(x = cor_fr_p)
 #correlation for negative mode
 fr_neg_fc <- as.data.frame(t(fr_neg_f))
-source("scripts/ordermatrixforcorplot_fr.R")
 cor_fr_n <- ordermatrixforcorplot_fr(x = fr_neg_fc, compounds = compounds_fr_neg)
+```
+
+```{r, eval = F}
+#get pvalues
+c0_fr_p <- ordermatrixforcorplot_fr2(x = fr_pos_fc)
+testRes_c_fr_p <- cor.mtest(as.data.frame(c0_fr_p), conf.level = 0.95)
+testRes_c_fr_p <- as.data.frame(testRes_c_fr_p$p)
+c0_fr_n <- ordermatrixforcorplot_fr2(x = fr_neg_fc)
+testRes_c_fr_n <- cor.mtest(as.data.frame(c0_fr_n), conf.level = 0.95)
+testRes_c_fr_n <- as.data.frame(testRes_c_fr_n$p)
+```
+
+```{r}
+testRes_c_fr_p_h <- read.csv("output/testRes_c_fr_p_h.csv", header = T, fileEncoding = "UTF-8-BOM") %>% column_to_rownames("X")
+names(testRes_c_fr_p_h) <- row.names(testRes_c_fr_p_h)
+testRes_c_fr_p_h_subset <- get_testRes_fr(x = fr_pos_fc, compounds = compounds_fr_pos, t = testRes_c_fr_p_h)
+#plot
 source("scripts/plotcor.R")
-testRes = cor.mtest(cor_fr_n, conf.level = 0.95)
-corplot_fr_n <- plotcor(x = cor_fr_n)
+corplot_fr_p <- plotcor(x = cor_fr_p, t = testRes_c_fr_p_h_subset)
+
+testRes_c_fr_n_h <- read.csv("output/testRes_c_fr_n_h.csv", header = T, fileEncoding = "UTF-8-BOM") %>% column_to_rownames("X")
+names(testRes_c_fr_n_h) <- row.names(testRes_c_fr_n_h)
+testRes_c_fr_n_h_subset <- get_testRes_fr(x = fr_neg_fc, compounds = compounds_fr_neg, t = testRes_c_fr_n_h)
+#plot
+corplot_fr_n <- plotcor(x = cor_fr_n, t = testRes_c_fr_n_h_subset)
 ```
 
 
