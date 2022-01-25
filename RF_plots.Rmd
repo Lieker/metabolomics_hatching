@@ -208,6 +208,8 @@ corr_hatching_n_extract <- correlationlist(x = t(extract_neg_f), interest = "hat
 source("scripts/add_mz.R")
 corr_solA_p_extract <- add_mz(x = corr_solA_p_extract, c = compounds_extract_pos)
 corr_solA_n_extract <- add_mz(x = corr_solA_n_extract, c = compounds_extract_neg)
+corr_hatching_p_extract <- add_mz(x = corr_hatching_p_extract, c = compounds_extract_pos)
+corr_hatching_n_extract <- add_mz(x = corr_hatching_n_extract, c = compounds_extract_neg)
 ```
 
 Then run the overlap_RF_corr function.
