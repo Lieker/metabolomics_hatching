@@ -175,8 +175,10 @@ Now plot a PCA plot
 
 ```{r, fig.height = 6, fig.width = 8}
 source("scripts/plotpca.R")
-plotpca(x = exudate_neg_frt) + scale_size(guide = "none")
-plotpca(x = exudate_pos_frt) + scale_size(guide = "none")
+plotpca(x = exudate_neg_frt)
+plotpca(x = exudate_pos_frt)
+plotpca3(x = exudate_neg_frt, xaxis = "(68.28%)", yaxis = "(4.83%)")
+plotpca3(x = exudate_pos_frt, xaxis = "(41.41%)", yaxis = "(13.88%)")
 ```
 
 
