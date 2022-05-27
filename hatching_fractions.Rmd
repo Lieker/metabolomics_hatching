@@ -170,6 +170,7 @@ fr_neg_f <- fr_neg[(!apply(fr_neg<(fr_neg_b*1.1),1,all)),]
 
 Do transformations (centre and scale) for PCA plot. There is no vsn transformation since there too little sample to base this transformation on.Then plot pca plots.
 ```{r}
+library(mdatools)
 fr_pos_ft <- prep.autoscale(t(fr_pos_f), center = TRUE, scale = TRUE)
 fr_neg_ft <- prep.autoscale(t(fr_neg_f), center = TRUE, scale = TRUE)
 meanSdPlot(t(fr_pos_f))
@@ -200,7 +201,7 @@ pn <- ggplot(fr_n_subset, aes(x = fraction, y = value)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         axis.title.x=element_blank()) +
   ylab("counts") +
-  scale_colour_discrete(name = "feature", labels = c("m/z 497.18, Rt 6.70", "m/z 525.18, Rt 7.32")) +
+  scale_colour_discrete(name = "feature", labels = c(expression(italic(m/z)~"497.18, Rt 6.70"), expression(italic(m/z)~"525.18, Rt 7.32"))) +
   ggtitle("Negative mode") +
   facet_grid(. ~ genotype)
 pn
@@ -217,14 +218,14 @@ pp <- ggplot(fr_p_subset, aes(x = fraction, y = value)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         axis.title.x=element_blank()) +
   ylab("counts") +
-  scale_colour_discrete(name = "feature", labels = c("m/z 499.20, Rt 6.69")) +
+  scale_colour_discrete(name = "feature", labels = c(expression(italic(m/z)~"499.20, Rt 6.69"))) +
   ggtitle("Positive mode") +
   facet_grid(. ~ genotype)
 pp
 
 fr_subset <- rbind(fr_n_subset, fr_p_subset)
 fr_subset$mode <- c(rep("negative", 24), rep("positive", 12))
-fr_subset$label <- c(rep("m/z 497.18 (-), Rt 6.70", 12), rep("m/z 525.18 (-), Rt 7.32", 12), rep("m/z 499.20 (+), Rt 6.69", 12))
+fr_subset$label <- c(rep(expression(italic(m/z)~"497.18 (-), Rt 6.70"), 12), rep(expression(italic(m/z)~"525.18 (-), Rt 7.32"), 12), rep(expression(italic(m/z)~"499.20 (+), Rt 6.69"), 12))
 
 # add hatch data
 toMatch <- c("f08", "f09", "f10", "f11")
@@ -236,12 +237,15 @@ hatch_s_subset$fraction <- rep(c("F08","F09","F10","F11"), 3)
 
 #final plot
 ppn <- ggplot(fr_subset, aes(x = fraction, y = value)) +
-  geom_line(aes(group = label, color = label), size = 1) +
+  geom_line(aes(group = variable, color = variable), size = 1) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         axis.title.x=element_blank()) +
   ylab("counts") +
-  scale_colour_discrete(name = "feature") +
+  scale_color_discrete(name = "feature", 
+                       labels = c(expression(italic(m/z)~"497.18 (-), Rt 6.70"), 
+                                  expression(italic(m/z)~"525.18 (-), Rt 7.32"), 
+                                  expression(italic(m/z)~"499.20 (+), Rt 6.69"))) +
   facet_grid(. ~ genotype)+ 
   geom_bar(data = hatch_s_subset,
                aes(x = fraction, 
